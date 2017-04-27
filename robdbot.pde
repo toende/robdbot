@@ -1,3 +1,5 @@
+PlayerBot player;
+
 void setup(){
 
 }
