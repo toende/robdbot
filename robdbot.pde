@@ -1,11 +1,11 @@
 PlayerBot player;
-
+Map m;
 void setup(){
-
+  m = new Map();
 }
 
 void draw(){
   
-  rect(10,10,100,100);
+  m.drawMap();
   
 }
