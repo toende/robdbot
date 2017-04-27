@@ -18,6 +18,6 @@ public class Tile{
   
   private void draw(){
     fill(type.tColor);
-    rect(posX*10, posY*10, 10, 10);
+    rect(posX*10*multiplier, posY*10*multiplier, 10*multiplier, 10*multiplier);
   }
 }

@@ -1,15 +1,15 @@
 public class Map{
 
   Types[][] firstMap = 
-  { {Types.WATER, Types.WATER,  Types.WATER,  Types.WATER,  Types.WATER},
-    {Types.WATER, Types.GRASS, Types.GRASS, Types.GRASS, Types.WATER},
-    {Types.WATER, Types.GRASS, Types.GRASS, Types.GRASS, Types.WATER},
-    {Types.WATER, Types.GRASS, Types.GRASS, Types.GRASS, Types.WATER},
-    {Types.WATER, Types.GRASS, Types.GRASS, Types.GRASS, Types.WATER},
-    {Types.WATER, Types.GRASS, Types.GRASS, Types.GRASS, Types.WATER},
-    {Types.WATER, Types.GRASS, Types.GRASS, Types.GRASS, Types.WATER},
-    {Types.WATER, Types.GRASS, Types.GRASS, Types.GRASS, Types.WATER},
-    {Types.WATER, Types.WATER,  Types.WATER,  Types.WATER,  Types.WATER}};
+  { {Types.EDGE, Types.EDGE,  Types.EDGE,  Types.EDGE,  Types.EDGE},
+    {Types.EDGE, Types.GRASS, Types.GRASS, Types.GRASS, Types.EDGE},
+    {Types.EDGE, Types.GRASS, Types.GRASS, Types.GRASS, Types.EDGE},
+    {Types.EDGE, Types.GRASS, Types.GRASS, Types.GRASS, Types.EDGE},
+    {Types.EDGE, Types.GRASS, Types.GRASS, Types.GRASS, Types.EDGE},
+    {Types.EDGE, Types.GRASS, Types.GRASS, Types.GRASS, Types.EDGE},
+    {Types.EDGE, Types.GRASS, Types.GRASS, Types.GRASS, Types.EDGE},
+    {Types.EDGE, Types.GRASS, Types.GRASS, Types.GRASS, Types.EDGE},
+    {Types.EDGE, Types.EDGE,  Types.EDGE,  Types.EDGE,  Types.EDGE}};
   
   Tile[][] tiles; 
 
@@ -27,10 +27,28 @@ public class Map{
         Tile tTest = new Tile(tType, TileStatus.FREE, xCounter, yCounter);
         System.out.println(tTest.status);
         
-        tiles[xCounter][yCounter] = new Tile(tType, TileStatus.FREE, xCounter, yCounter);
+        tiles[xCounter][yCounter] = new Tile(tType, getDefault(tType.type), xCounter, yCounter);
         xCounter++;
       }
       yCounter++;
+    }
+    
+  }
+
+  private TileStatus getDefault(Types t){
+        switch (t){
+      case ROAD:
+        return TileStatus.FREE;
+      case FORREST:
+        return TileStatus.FREE;
+      case WATER:
+        return TileStatus.FREE;
+      case GRASS:
+       return TileStatus.FREE;
+      case EDGE:
+       return TileStatus.WALL;    
+      default:
+        return null;
     }
     
   }
@@ -41,5 +59,9 @@ public class Map{
         t.draw();
       }
     }
+  }
+  
+  private Tile getTile(int x, int y){
+    return tiles[x][y];
   }
 }
